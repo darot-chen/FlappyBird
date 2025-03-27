@@ -71,7 +71,7 @@ export class GameCtrl extends Component {
     initListener () {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
 
-        this.node.on(Input.EventType.MOUSE_DOWN, () => {
+        this.node.on(Input.EventType.TOUCH_START, () => {
             if (this.isOver) {
                 this.resetGame();
                 this.bird.resetBird();

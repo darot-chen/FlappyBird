@@ -41,6 +41,4 @@ export class PipePool extends Component {
         this.pool.clear();
         this.initPool();
     }
-
 }
-

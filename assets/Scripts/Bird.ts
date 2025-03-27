@@ -1,4 +1,4 @@
-import { _decorator, CCFloat, Component, Animation, Vec3, tween } from 'cc';
+import { _decorator, CCFloat, Component, Animation, Vec3, tween, Quat } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Bird')
@@ -14,6 +14,8 @@ export class Bird extends Component {
 
     public hitSomething: boolean = false;
 
+    private rotation = new Quat(0, 0, 0, 0);
+
     onLoad () {
         this.resetBird();
         this.birdAnimation = this.getComponent(Animation)!;
@@ -22,6 +24,7 @@ export class Bird extends Component {
     resetBird () {
         this.birdLocation = new Vec3(0, 0, 0);
         this.node.setPosition(this.birdLocation);
+        this.node.setRotation(this.rotation);
         this.hitSomething = false;
     }
 
@@ -40,6 +43,7 @@ export class Bird extends Component {
                     easing: 'smooth',
                     onUpdate: (target: Vec3, ratio: number) => {
                         this.node.setPosition(target);
+                        this.node.setRotation(this.rotation);
                     }
                 }
             ).start();

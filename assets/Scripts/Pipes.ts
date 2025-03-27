@@ -1,4 +1,4 @@
-import { _decorator, Component, find, Node, screen, UITransform, Vec3 } from 'cc';
+import { _decorator, Canvas, Component, director, find, Node, screen, UITransform, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 const random = (min: number, max: number) => {
@@ -32,8 +32,8 @@ export class Pipes extends Component {
     }
 
     initPos () {
-        this.tempStartLocationUp.x = (this.topPipe.getComponent(UITransform).width + this.scene.width);
-        this.tempStartLocationDown.x = (this.bottomPipe.getComponent(UITransform).width + this.scene.width);
+        this.tempStartLocationUp.x = (this.topPipe.getComponent(UITransform).width + this.scene.width / 2);
+        this.tempStartLocationDown.x = (this.bottomPipe.getComponent(UITransform).width + this.scene.width / 2);
 
         let gap = random(90, 100);
         let topHeight = random(0, 450);
@@ -63,7 +63,7 @@ export class Pipes extends Component {
             this.game.passPipe();
         }
 
-        if (this.topPipe.position.x < (0 - this.scene.width)) {
+        if (this.topPipe.position.x < (0 - this.scene.width / 1.5)) {
             this.game.createPipe();
             this.destroy();
         }

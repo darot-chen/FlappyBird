@@ -6,13 +6,13 @@ import { GameCtrl } from './GameCtrl';
 @ccclass('Ground')
 export class Ground extends Component {
 
-    @property({type: Node})
+    @property({ type: Node })
     public ground1: Node = null!;
 
-    @property({type: Node})
+    @property({ type: Node })
     public ground2: Node = null!;
 
-    @property({type: Node})
+    @property({ type: Node })
     public ground3: Node = null!;
 
     public groundWidth1: number = 0;
@@ -31,7 +31,7 @@ export class Ground extends Component {
         this.startUp();
     }
 
-    startUp() {
+    startUp () {
         this.groundWidth1 = this.ground1.getComponent(UITransform).width;
         this.groundWidth2 = this.ground2.getComponent(UITransform).width;
         this.groundWidth3 = this.ground3.getComponent(UITransform).width;
@@ -59,15 +59,15 @@ export class Ground extends Component {
         const scene = director.getScene();
         const canvas = scene.getComponentInChildren(Canvas);
 
-        if(this.tempStartLocation1.x <= -this.groundWidth1) {
+        if (this.tempStartLocation1.x < (0 - this.groundWidth1)) {
             this.tempStartLocation1.x = canvas.getComponent(UITransform).width;
         }
 
-        if(this.tempStartLocation2.x <= -this.groundWidth2) {
+        if (this.tempStartLocation2.x < 0 - this.groundWidth2) {
             this.tempStartLocation2.x = canvas.getComponent(UITransform).width;
         }
 
-        if(this.tempStartLocation3.x <= -this.groundWidth3) {
+        if (this.tempStartLocation3.x < 0 - this.groundWidth3) {
             this.tempStartLocation3.x = canvas.getComponent(UITransform).width;
         }
 
